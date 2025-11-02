@@ -20,14 +20,14 @@ A complete user authentication system built with Django, featuring user registra
 - **Database:** SQLite (default, can be changed)
 - **Email:** SMTP (Gmail)
 
-## 📋 Prerequisites
+##  Prerequisites
 
 Before you begin, ensure you have the following installed:
 - Python 3.8 or higher
 - pip (Python package manager)
 - Git
 
-## 🔧 Installation
+##  Installation
 
 ### 1. Clone the Repository
 
@@ -134,17 +134,12 @@ Visit `/test-email/` to send a test email and verify configuration
 
 ##  Security Features
 
-- ✅ Password hashing with Django's built-in system
-- ✅ CSRF protection on all forms
-- ✅ POST-only logout to prevent CSRF attacks
-- ✅ Secure session management
-- ✅ SQL injection protection via Django ORM
-- ✅ XSS protection with template escaping
-
-##  License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
+-  Password hashing with Django's built-in system
+-  CSRF protection on all forms
+-  POST-only logout to prevent CSRF attacks
+-  Secure session management
+-  SQL injection protection via Django ORM
+-  XSS protection with template escaping
 
 ##  Acknowledgments
 
