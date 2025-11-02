@@ -12,6 +12,7 @@ from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 
 
+
 # Create your views here.
 def index(request):
     return render(request, 'index.html', {'title': 'index'})
@@ -72,24 +73,32 @@ def logout_view(request):
     return render(request, 'logout.html')
 
 
-# Optional: Test email functionality
 def test_email(request):
-    """
-    Test view to check if email is working
-    Visit: http://127.0.0.1:8000/test-email/
-    """
+    """Test email functionality"""
+    from django.core.mail import send_mail
+    from django.conf import settings
+    
     try:
+        print("=" * 50)
+        print("EMAIL SETTINGS:")
+        print(f"EMAIL_HOST_USER: {settings.EMAIL_HOST_USER}")
+        print(f"EMAIL_HOST_PASSWORD length: {len(settings.EMAIL_HOST_PASSWORD)} characters")
+        print(f"EMAIL_HOST_PASSWORD has spaces: {' ' in settings.EMAIL_HOST_PASSWORD}")
+        print(f"EMAIL_HOST: {settings.EMAIL_HOST}")
+        print(f"EMAIL_PORT: {settings.EMAIL_PORT}")
+        print("=" * 50)
+        
         send_mail(
             'Test Email from Django',
-            'This is a test message to verify email configuration.',
-            'bbhusal394@gmail.com',
-            ['bbhusal394@gmail.com'],  # Send to yourself for testing
+            'If you receive this, email is working!',
+            settings.EMAIL_HOST_USER,
+            ['bbhusal394@gmail.com'],
             fail_silently=False,
         )
-        messages.success(request, 'Test email sent successfully! Check your inbox.')
-        print("✓ Test email sent successfully")
+        print("✓ Email sent successfully!")
+        messages.success(request, 'Test email sent! Check your inbox.')
     except Exception as e:
-        messages.error(request, f'Email sending failed: {str(e)}')
-        print(f"✗ Test email failed: {str(e)}")
+        print(f"✗ Email failed: {str(e)}")
+        messages.error(request, f'Email failed: {str(e)}')
     
     return redirect('index')
